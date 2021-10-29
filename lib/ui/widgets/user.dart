@@ -6,7 +6,7 @@ class UserWidget extends StatelessWidget {
     required this.imageUrl,
     required this.title,
     required this.subtitle,
-    this.trailing,
+    required this.trailing,
     this.onTap,
     Key? key,
   }) : super(key: key);
@@ -14,7 +14,7 @@ class UserWidget extends StatelessWidget {
   String imageUrl;
   String title;
   String subtitle;
-  int? trailing;
+  int trailing;
   VoidCallback? onTap;
 
   @override
@@ -28,7 +28,7 @@ class UserWidget extends StatelessWidget {
         leading: Image.network(imageUrl),
         title: Text(title),
         subtitle: Text(subtitle),
-        trailing: Text(trailing!.toString()),
+        trailing: Text(trailing.toString()),
         onTap: onTap,
       ),
     );
