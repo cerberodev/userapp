@@ -9,4 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get counterAppBarTitle => 'Counter';
+
+  @override
+  String get appTitle => 'UserApp';
 }

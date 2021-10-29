@@ -99,6 +99,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Counter'**
   String get counterAppBarTitle;
+
+  /// Text shown in the AppBar of the UserApp
+  ///
+  /// In en, this message translates to:
+  /// **'UserApp'**
+  String get appTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

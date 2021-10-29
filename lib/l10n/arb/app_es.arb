@@ -3,5 +3,10 @@
     "counterAppBarTitle": "Contador",
     "@counterAppBarTitle": {
         "description": "Texto mostrado en la AppBar de la página del contador"
+    },
+
+    "appTitle": "App de Usuarios",
+    "@appTitle": {
+        "description": "Texto mostrado en el AppBar de la app usuarios"
     }
 }
