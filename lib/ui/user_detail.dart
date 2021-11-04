@@ -1,7 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:userapp/models/user.dart';
+import 'package:userapp/ui/widgets/widgets.dart';
 
 class UserDetailPage extends StatelessWidget {
   const UserDetailPage({Key? key, required this.user}) : super(key: key);
@@ -18,55 +17,50 @@ class UserDetailPage extends StatelessWidget {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Card(
-                //  TODO: Modularize this widget
-                color: Colors.teal,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
+              CardImageText(
+                image: user.avatar_url,
+                text: user.login,
+              ),
+              const SizedBox(height: 10),
+              CardIdUser(
+                text: user.id.toString(),
+              ),
+              const SizedBox(height: 10),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<WebViewPage>(
+                      builder: (context) => WebViewPage(text: user.login),
+                    ),
+                  );
+                },
+                style: ButtonStyle(
+                  alignment: Alignment.center,
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  backgroundColor: MaterialStateProperty.all(
+                    Colors.red[300],
+                  ),
                 ),
-                elevation: 5,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(25),
-                      child: Image.network(
-                        user.avatar_url,
-                        fit: BoxFit.cover,
-                        width: 400,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Text(
-                        'This username is: ${user.login}',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
+                autofocus: true,
+                child: Text(
+                  'Go to Github page of ${user.login}',
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
               const SizedBox(height: 10),
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                elevation: 5,
-                color: Colors.purple[300],
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                  child: Text(
-                    'ID this user is: ${user.id}',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+              RaisedButton(
+                // TODO: THIS EXAMPLE OF WIDGET DEPRECATED
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Go back'),
               ),
             ],
           ),
